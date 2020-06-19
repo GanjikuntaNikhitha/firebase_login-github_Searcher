@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   Input,
-  OnChange,
+  OnChanges,
   ChangeDetectorRef,
 } from '@angular/core';
 
@@ -13,7 +13,7 @@ import { GithubService } from './../../services/github.service';
   templateUrl: './repos.component.html',
   styleUrls: ['./repos.component.css'],
 })
-export class ReposComponent implements OnInit, OnChange {
+export class ReposComponent implements OnInit, OnChanges {
   @Input() repoUrl: string;
   repos = [];
 
@@ -23,7 +23,7 @@ export class ReposComponent implements OnInit, OnChange {
   ) {}
 
   ngOnInit(): void {}
-  ngOnChange(): void {
+  ngOnChanges(): void {
     if (this.repoUrl) {
       this.githubService.getRepos(this.repoUrl).subscribe(
         (repos: []) => {
